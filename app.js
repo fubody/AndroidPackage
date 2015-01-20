@@ -30,7 +30,6 @@ app.get('/', function (req, res) {
         })
     })*/
     res.render('index',{
-        title: 'abc',
         tasks: [{
             id: 1,
             status: '完成',
@@ -42,8 +41,12 @@ app.get('/', function (req, res) {
     })
 })
 
-app.post('/weibo_version/new', function(req, res){
+app.get('/task', function (req, res) {
+    res.render('task',{})
+})
 
+app.get('/version/new', function(req, res){
+    res.render('version_new',{})
 })
 
 

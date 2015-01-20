@@ -1,0 +1,32 @@
+//
+   Created by LI on 2015/1/20.
+extends ../layout
+block content
+   .container
+      .row
+         .panel
+            span.btn-lg 新建打包任务
+            a.btn.btn-default.navbar-right(type='button',href='./task') 取消
+            a.btn.btn-default.navbar-right(type='button',href='./task') 保存
+         .panel.panel-default
+            .panel-heading
+               span.label.label-default 选择微博版本
+            .panel-body
+               span.small 微博版本：
+               .btn-group
+                  button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
+                     span.caret
+                  ul.dropdown-menu(role='menu')
+                     li
+                        a.btn weibo5.0
+                     li
+                        a.btn weibo5.0
+                     li
+                        a.btn weibo5.0
+                     li.divider
+                     li
+                        a.btn.btn-default.btn-sm(href='./version/new') 创建新版本
+         .panel.panel-default
+            .panel-heading
+               span.label.label-default 基本配置
+            .panel-body
