@@ -1,0 +1,21 @@
+extends ../layout
+block content
+    .container
+        .row
+            form.form-horizontal(method="post", action="/admin/people/new")
+                input(type='hidden', name="_id", value=person._id)
+                .form-group
+                    label.col-sm-3.control-label(for="inputName") 姓名
+                    .col-sm-10
+                        input#inputName.form-control(type="text", name="name", value=person.name)
+                .form-group
+                    label.col-sm-3.control-label(for="inputGender") 性别
+                    .col-sm-10
+                        input#inputGender.form-control(type="text", name="gender", value=person.gender)
+                .form-group
+                    label.col-sm-3.control-label(for="inputTitle") 职称
+                    .col-sm-10
+                        input#inputTitle.form-control(type="text", name="title", value=person.title)
+                .form-group
+                    .col-sm-offset-2.col-sm-10
+                    button.btn.btn-default(type="submit") 录入

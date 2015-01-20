@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+    .container
+        .row
+            table.table.table-hover.table-condensed.table-bordered(align='center')
+                thead
+                    tr
+                        th ID
+                        th 打包状态
+                        th 创建时间
+                        th 结束时间
+                        th 程序版本
+                        th 描述
+                        th 详情
+                        th LOG
+                        th ZIP
+                        th APK
+                tbody
+                - console.log(tasks)
+                - console.log(title)
+                if tasks
+                    if tasks.length > 0
+                        each task in tasks
+                            tr
+                                td #{task.id}
+                                td #{task.status}
+                                td #{task.create_at}
+                                td #{task.finish_at}
+                                td #{task.app_version}
+                                td #{task.desc}
+                                td: a(target="_blank", href="../task/#{task.id}") 查看
+                                td: a(target="_blank", href="#") 下载
+                                td: a(target="_blank", href="#") 下载
+                                td: a(target="_blank", href="#") 下载
+                    else
+                        tr
+                            td(colspan='10') 暂无数据
+                else
+                    tr
+                        td(colspan='10', align='center') 暂无数据
+            ul.pager
+                li
+                    a(href='#') Previous
+                li
+                    a(href='#') Next

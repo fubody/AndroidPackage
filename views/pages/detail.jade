@@ -1,0 +1,28 @@
+extends ../layout
+block content
+    .container
+        .row
+            .col-md-5
+                dl.dl-horizontal
+                    dt 姓名
+                    dd= person.name
+                    dt 性别
+                    dd= person.gender
+                    dt 职级
+                    dd= person.title
+        .row
+            table.table.table-hover.table-bordered
+                thead
+                    tr
+                        th 姓名
+                        th 性别
+                        th 职称
+                        th 查看
+                tbody
+            .dropdown
+                button#dropdownMenu1.btn.dropdown-toggle(type='button', data-toggle='dropdown') 主题
+                    span.caret
+                ul.dropdown-menu(role='menu' aria-labelledby='dropdownMenu1')
+                    li(role='presentation') Java
+                    li(role='presentation') Java
+                    li(role='presentation') Java
