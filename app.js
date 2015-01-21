@@ -7,7 +7,7 @@ var mongoose = require('mongoose')
 var _ = require('underscore')
 var People = require('./models/people')
 var bodyParser = require('body-parser')
-var port = process.env.PORT || 1000
+var port = 11233
 var app = express()
 
 mongoose.connect('mongodb://localhost/android_weibo_package')
