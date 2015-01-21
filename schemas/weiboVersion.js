@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 
 var WeiboVersionSchema = new mongoose.Schema({
     version_name        :String,
-    description         :Boolean
+    description         :String
 })
 
 /*WeiboVersionSchema.pre('save', function(next) {
