@@ -45,8 +45,12 @@ app.get('/task', function (req, res) {
     res.render('task',{})
 })
 
-app.get('/version/new', function(req, res){
-    res.render('version_new',{})
+app.get('/version', function(req, res){
+    res.render('version',{})
+})
+
+app.get('/relation', function(req, res){
+    res.render('relation',{})
 })
 
 

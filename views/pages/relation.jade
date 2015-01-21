@@ -1,0 +1,70 @@
+//
+   Created by lijie8 on 2015/1/21.
+extends ../layout
+
+block content
+   .container
+      .row
+         .panel.panel-default
+            .panel-heading
+               h3.panel-title 添加tag关联
+            .panel-body
+               div
+                  span.small 微博版本：
+                  .btn-group
+                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
+                        span.caret
+                     ul.dropdown-menu(role='menu')
+                        li
+                           a.btn weibo5.0
+                        li
+                           a.btn weibo5.0
+                        li
+                           a.btn weibo5.0
+                        li.divider
+                        li
+                           a.btn.btn-default.btn-sm(href='./version') 创建新版本
+               br
+               div
+                  span.small 选择仓库：
+                  .btn-group
+                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') appmarket
+                        span.caret
+                     ul.dropdown-menu(role='menu')
+                        li
+                           a.btn appmarket
+                        li
+                           a.btn browser
+                        li
+                           a.btn facebook
+                        li
+                           a.btn main
+                        li
+                           a.btn monitor
+                        li
+                           a.btn mediaplayer
+                        li
+                           a.btn photoalbum
+                        li
+                           a.btn res
+                        li
+                           a.btn sdk
+                        li
+                           a.btn weiyou
+               br
+               div
+                  span.small 选择标签：
+                  .btn-group
+                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') tag_5.0.0
+                        span.caret
+                     ul.dropdown-menu(role='menu')
+                        li
+                           a.btn tag_5.0.0
+                        li
+                           a.btn tag_5.1.0
+                        li
+                           a.btn tag_5.5.0
+               br
+               div
+                  a.btn.btn-default(type='button',href='./') 保存
+                  a.btn.btn-default(type='button',href='./') 取消
