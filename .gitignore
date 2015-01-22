@@ -1,0 +1,10 @@
+.DS_Store
+build/output/
+build/source/
+build/script/temp
+nohup.out
+*/.DS_Store
+build/tags
+build/packaging_lock
+temp
+.idea
