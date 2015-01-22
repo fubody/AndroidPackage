@@ -29,6 +29,11 @@ WeiboVersionSchema.statics = {
         return this
             .findOne({_id: id})
             .exec(cb)
+    },
+    findByName: function(name, cb) {
+        return this.
+            findOne({version_name: name}).
+            exec(cb)
     }
 }
 

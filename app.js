@@ -5,7 +5,7 @@ var express = require('express')
 var path = require('path')
 var mongoose = require('mongoose')
 var _ = require('underscore')
-var People = require('./models/people')
+var Version = require('./models/weiboVersion')
 var bodyParser = require('body-parser')
 var port = 11233
 var app = express()
@@ -15,20 +15,10 @@ mongoose.connect('mongodb://localhost/android_weibo_package')
 app.set('views', './views/pages')
 app.set('view engine', 'jade')
 app.use(bodyParser.urlencoded({extended:false}))
-app.use(express.static(path.join(__dirname, 'bower_components')))
+app.use(express.static(path.join(__dirname, 'public')))
 app.listen(port);
 
 app.get('/', function (req, res) {
-    /*People.fetch(function(err, people) {
-        if (err) {
-            console.log(err)
-        }
-
-        res.render('index', {
-            title: '打包平台 首页',
-            people: people
-        })
-    })*/
     res.render('index',{
         tasks: [{
             id: 1,
@@ -47,6 +37,36 @@ app.get('/task', function (req, res) {
 
 app.get('/version', function(req, res){
     res.render('version',{})
+})
+
+app.post('/version/new', function (req, res) {
+    console.log(req.body)
+    var versionObj = req.body
+
+    if (versionObj) {
+        var name = versionObj.version_name
+        var desc = versionObj.version_description
+        Version.findByName(name,function(err, version){
+            if (err) {
+                console.log(err)
+            }
+            if (version) {
+                res.redirect('/version')
+            } else {
+                _version = new Version({
+                    version_name: versionObj.version_name,
+                    description: versionObj.version_description
+                })
+                _version.save(function(version,err){
+                    if (err) {
+                        console.log(err)
+                    }
+
+                    res.redirect('/task')
+                })
+            }
+        })
+    }
 })
 
 app.get('/relation', function(req, res){

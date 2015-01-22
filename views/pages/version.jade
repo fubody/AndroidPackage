@@ -7,14 +7,14 @@ block content
                 .panel-heading
                     h3.panel-title 添加微博版本
                 .panel-body
-                    form.form-horizontal(role='form')
+                    form.form-horizontal(role='form',action='/version/new',method='post')
                         .input-group.input-group-sm
                             span.input-group-addon 微博版本名
-                            input.form-control(type='text')
+                            input.form-control(type='text',name='version_name')
                         br
                         .input-group.input-group-sm
                             span.input-group-addon 版本描述
-                            input.form-control(type='text')
+                            input.form-control(type='text',name='version_description')
                         br
                         .input-group.input-group-sm
                             button.btn.btn-default(type="submit") 录入
