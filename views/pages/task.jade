@@ -17,12 +17,23 @@ block content
                   button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
                      span.caret
                   ul.dropdown-menu(role='menu')
-                     li
-                        a.btn weibo5.0
-                     li
-                        a.btn weibo5.0
-                     li
-                        a.btn weibo5.0
+                     if weiboVersions
+                        if weiboVersions.length > 0
+                           each weiboVersion in weiboVersions
+                              li
+                                 a.btn #{weiboVersion.version_name}
+                        else
+                           li
+                              a.btn.btn-default 暂无版本信息
+                     else
+                        li
+                           a.btn.btn-default 暂无版本信息
+                     //li
+                     //   a.btn weibo5.0
+                     //li
+                     //   a.btn weibo5.0
+                     //li
+                     //   a.btn weibo5.0
                      li.divider
                      li
                         a.btn.btn-default.btn-sm(href='./version') 创建新版本

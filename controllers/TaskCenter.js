@@ -3,7 +3,7 @@
  */
 
 var db = require('./db')
-db.connect();
+//db.connect();
 var mongoose = db.mongoose;
 require('../models/task');
 var Task = mongoose.model('package_task');

@@ -5,9 +5,11 @@ var express = require('express')
 var path = require('path')
 var mongoose = require('mongoose')
 var _ = require('underscore')
-var indexR = require('./routes/index')
+var indexRouter = require('./routes/index')
+var wbvRouter = require('./routes/WeiboVersion')
+
 var bodyParser = require('body-parser')
-var port = 11233;
+var port = 8000;
 var app = express()
 
 
@@ -15,7 +17,8 @@ app.set('views', './views/pages')
 app.set('view engine', 'jade')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname, 'bower_components')))
-app.use('/', indexR);
+app.use('/', indexRouter);
+app.use('/', wbvRouter);
 
 var server_http = require('http').createServer(app);
 server_http.listen(port);
