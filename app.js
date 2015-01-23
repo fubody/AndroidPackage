@@ -5,7 +5,7 @@ var express = require('express')
 var path = require('path')
 var mongoose = require('mongoose')
 var _ = require('underscore')
-var Version = require('./models/weiboVersion')
+Version = require('./controllers/version')
 var bodyParser = require('body-parser')
 var port = 11233
 var app = express()
@@ -39,35 +39,7 @@ app.get('/version', function(req, res){
     res.render('version',{})
 })
 
-app.post('/version/new', function (req, res) {
-    console.log(req.body)
-    var versionObj = req.body
-
-    if (versionObj) {
-        var name = versionObj.version_name
-        var desc = versionObj.version_description
-        Version.findByName(name,function(err, version){
-            if (err) {
-                console.log(err)
-            }
-            if (version) {
-                res.redirect('/version')
-            } else {
-                _version = new Version({
-                    version_name: versionObj.version_name,
-                    description: versionObj.version_description
-                })
-                _version.save(function(version,err){
-                    if (err) {
-                        console.log(err)
-                    }
-
-                    res.redirect('/task')
-                })
-            }
-        })
-    }
-})
+app.post('/version/new', Version.createVersion)
 
 app.get('/relation', function(req, res){
     res.render('relation',{})
