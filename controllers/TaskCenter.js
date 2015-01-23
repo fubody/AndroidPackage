@@ -53,6 +53,3 @@ exports.createRelation = function(req, res){
     res.render('relation',{});
 }
 
-exports.createVersion = function(req, res){
-    res.render('version', {});
-}

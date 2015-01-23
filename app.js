@@ -18,7 +18,7 @@ app.set('view engine', 'jade')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname, 'bower_components')))
 app.use('/', indexRouter);
-app.use('/', wbvRouter);
+app.use('/wbv', wbvRouter);
 
 var server_http = require('http').createServer(app);
 server_http.listen(port);

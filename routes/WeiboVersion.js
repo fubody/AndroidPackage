@@ -9,6 +9,7 @@ var router = express.Router();
 
 
 router.get('/', WeiboVersion.getAllVersion);
-router.post('/createVersion', WeiboVersion.createVersion);
+router.get('/version', WeiboVersion.createVersionQ);
+router.post('/version', WeiboVersion.createVersion);
 
 module.exports = router;

@@ -11,7 +11,6 @@ var router = express.Router();
 router.get('/hello', Task.hello);
 router.get('/', Task.getall);
 router.get('/task', Task.createTask);
-router.get('/version', Task.createVersion);
 router.get('/relation', Task.createRelation);
 
 module.exports = router;

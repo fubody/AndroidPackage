@@ -8,6 +8,11 @@ var mongoose = require('mongoose');
 require('../models/weiboVersion')
 var WeiboVersion = mongoose.model('weibo_version');
 
+
+exports.createVersionQ = function(req, res){
+    res.render('version', {});
+}
+
 exports.createVersion = function(req, res){
     var weiboVersion = new WeiboVersion({
         version_name : req.body.version_name,
