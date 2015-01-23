@@ -41,3 +41,15 @@ exports.getAllVersion = function (req, res) {
         }
     })
 }
+
+exports.fetchVersions = function (req, res, next) {
+    Version.fetch(function (err, versions) {
+        if (err) {
+            console.log(err)
+        }
+        if (versions) {
+            req.body.versions = versions
+            next()
+        }
+    })
+}

@@ -6,6 +6,8 @@ var path = require('path')
 var mongoose = require('mongoose')
 var _ = require('underscore')
 Version = require('./controllers/version')
+WeiboModel = require('./controllers/weibo_model')
+Turn = require('./controllers/turn')
 var bodyParser = require('body-parser')
 var port = 11233
 var app = express()
@@ -39,11 +41,9 @@ app.get('/version', function(req, res){
 
 app.post('/version/new', Version.createVersion)
 
-app.get('/relation', function(req, res){
-    res.render('relation',{})
-})
+app.get('/relation', Version.fetchVersions, WeiboModel.fetchModels, Turn.turn_to_relation)
 
-
+//app.get('/prepare', WeiboModel.init)
 
 app.get('/admin', function(req, res){
     res.render('admin', {

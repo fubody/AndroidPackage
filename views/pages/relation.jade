@@ -3,6 +3,7 @@
 extends ../layout
 
 block content
+   script(type='text/javascript', src='/js/relation.js')
    .container
       .row
          .panel.panel-default
@@ -15,12 +16,11 @@ block content
                      button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
                         span.caret
                      ul.dropdown-menu(role='menu')
-                        li
-                           a.btn weibo5.0
-                        li
-                           a.btn weibo5.0
-                        li
-                           a.btn weibo5.0
+                        if versions
+                           if versions.length > 0
+                              each version in versions
+                                 li
+                                    a.btn #{version.version_name}
                         li.divider
                         li
                            a.btn.btn-default.btn-sm(href='./version') 创建新版本
@@ -31,26 +31,11 @@ block content
                      button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') appmarket
                         span.caret
                      ul.dropdown-menu(role='menu')
-                        li
-                           a.btn appmarket
-                        li
-                           a.btn browser
-                        li
-                           a.btn facebook
-                        li
-                           a.btn main
-                        li
-                           a.btn monitor
-                        li
-                           a.btn mediaplayer
-                        li
-                           a.btn photoalbum
-                        li
-                           a.btn res
-                        li
-                           a.btn sdk
-                        li
-                           a.btn weiyou
+                        if models
+                           if models.length > 0
+                              each model in models
+                                 li
+                                    a.btn #{model.model_name}
                br
                div
                   span.small 选择标签：
