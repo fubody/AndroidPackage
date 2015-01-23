@@ -3,7 +3,6 @@
  */
 
 var db = require('./db')
-//db.connect();
 var mongoose = db.mongoose;
 require('../models/task');
 var Task = mongoose.model('package_task');
@@ -21,11 +20,6 @@ exports.getall = function(req, res){
     });
 }
 
-/*exports.add = function (req, res){
-    console.log('jump to addone');
-    res.render('add', {title:'insert one demo'});
-}*/
-
 exports.addone = function(req, res){
 
     var task = new Task({
@@ -42,11 +36,6 @@ exports.addone = function(req, res){
         console.log(result);
         res.redirect('/');
     });
-}
-
-exports.createTask = function(req, res){
-    console.log('jump to creatTask');
-    res.render('task', {});
 }
 
 exports.createRelation = function(req, res){

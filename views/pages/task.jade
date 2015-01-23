@@ -1,6 +1,7 @@
 //
    Created by LI on 2015/1/20.
 extends ../layout
+script(type="text/javascript", src='/js/utils.js')
 block content
    .container
       .row
@@ -13,30 +14,18 @@ block content
                span.label.label-default 选择微博版本
             .panel-body
                span.small 微博版本：
-               .btn-group
-                  button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
-                     span.caret
-                  ul.dropdown-menu(role='menu')
+                  select#verSelect(style="width:105px; height:27px;", onclick='jumpTo()')
                      if weiboVersions
                         if weiboVersions.length > 0
                            each weiboVersion in weiboVersions
-                              li
-                                 a.btn #{weiboVersion.version_name}
+                              option  #{weiboVersion.version_name}
+
                         else
-                           li
-                              a.btn.btn-default 暂无版本信息
+                           option  暂无数据
+
                      else
-                        li
-                           a.btn.btn-default 暂无版本信息
-                     //li
-                     //   a.btn weibo5.0
-                     //li
-                     //   a.btn weibo5.0
-                     //li
-                     //   a.btn weibo5.0
-                     li.divider
-                     li
-                        a.btn.btn-default.btn-sm(href='./wbv/version') 创建新版本
+                        option  暂无数据
+                     option(value='0') 创建新版本
             .panel-body
                span.small 任务描述：
                input
