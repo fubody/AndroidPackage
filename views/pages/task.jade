@@ -14,15 +14,15 @@ block content
             .panel-body
                span.small 微博版本：
                .btn-group
-                  button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
+                  button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                     a#version_display(type='text') 选择微博版本
                      span.caret
                   ul.dropdown-menu(role='menu')
-                     li
-                        a.btn weibo5.0
-                     li
-                        a.btn weibo5.0
-                     li
-                        a.btn weibo5.0
+                     if versions
+                        if versions.length > 0
+                           each version in versions
+                              li
+                                 a.btn(onclick='display("#{version.version_name}")') #{version.version_name}
                      li.divider
                      li
                         a.btn.btn-default.btn-sm(href='./version') 创建新版本

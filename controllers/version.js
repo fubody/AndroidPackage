@@ -30,3 +30,14 @@ exports.createVersion = function (req, res) {
         })
     }
 }
+
+exports.getAllVersion = function (req, res) {
+    Version.fetch(function (err, versions) {
+        if (err) {
+            console.log(err)
+        }
+        if (versions) {
+            res.render('task',{versions:versions})
+        }
+    })
+}

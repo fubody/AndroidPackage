@@ -31,9 +31,7 @@ app.get('/', function (req, res) {
     })
 })
 
-app.get('/task', function (req, res) {
-    res.render('task',{})
-})
+app.get('/task', Version.getAllVersion)
 
 app.get('/version', function(req, res){
     res.render('version',{})
