@@ -10,17 +10,20 @@ block content
             .panel-heading
                h3.panel-title 添加tag关联
             .panel-body
+               - var tags = [{tag_name: '无数据'}]
+               - var test= '123123test'
                div
                   span.small 微博版本：
                   .btn-group
-                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
+                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                        a#version_display 选择微博版本
                         span.caret
                      ul.dropdown-menu(role='menu')
                         if versions
                            if versions.length > 0
                               each version in versions
                                  li
-                                    a.btn #{version.version_name}
+                                    a.btn(onclick='display("version_display","#{version.version_name}")') #{version.version_name}
                         li.divider
                         li
                            a.btn.btn-default.btn-sm(href='./version') 创建新版本
@@ -28,27 +31,28 @@ block content
                div
                   span.small 选择仓库：
                   .btn-group
-                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') appmarket
+                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                        a#model_display 选择仓库
                         span.caret
                      ul.dropdown-menu(role='menu')
                         if models
                            if models.length > 0
                               each model in models
                                  li
-                                    a.btn #{model.model_name}
+                                    a.btn(onclick='displayModel(#{model})') #{model.model_name}
                br
                div
                   span.small 选择标签：
                   .btn-group
-                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') tag_5.0.0
+                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                        a#tag_display 选择标签
                         span.caret
                      ul.dropdown-menu(role='menu')
-                        li
-                           a.btn tag_5.0.0
-                        li
-                           a.btn tag_5.1.0
-                        li
-                           a.btn tag_5.5.0
+                        if tags
+                           if tags.length > 0
+                              each tag in tags
+                                 li
+                                    a.btn #{tag.tag_name}
                br
                div
                   a.btn.btn-default(type='button',href='./') 保存
