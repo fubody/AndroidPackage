@@ -4,9 +4,9 @@
 var mongoose = require('mongoose')
 
 var VersionSchema = new mongoose.Schema({
+    id: String,
     version_name: String,
-    description: String,
-
+    description: String
 })
 
 VersionSchema.statics = {

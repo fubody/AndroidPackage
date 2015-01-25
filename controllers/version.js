@@ -2,6 +2,7 @@
  * Created by lijie8 on 2015/1/23.
  */
 var Version = require('../models/version')
+var Sequence = require('./sequence')
 
 exports.createVersion = function (req, res) {
     var versionObj = req.body
@@ -16,15 +17,22 @@ exports.createVersion = function (req, res) {
             if (version) {
                 res.redirect('/version')
             } else {
-                _version = new Version({
-                    version_name: name,
-                    description: desc
-                })
-                _version.save(function(version,err){
+                Sequence.next_seq_id('version', function (err, seq_value) {
                     if (err) {
                         console.log(err)
+                    } else {
+                        var _version = new Version({
+                            id: seq_value,
+                            version_name: name,
+                            description: desc
+                        })
+                        _version.save(function(version,err){
+                            if (err) {
+                                console.log(err)
+                            }
+                            res.redirect('/task')
+                        })
                     }
-                    res.redirect('/task')
                 })
             }
         })

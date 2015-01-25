@@ -4,14 +4,27 @@ extends ../layout
 
 block content
    script(type='text/javascript', src='/js/relation.js')
+   script(type='text/javascript')
+      |var test = 'test';
+      |var models = [
+      if models
+         if models.length > 0
+            each model in models
+               |{model_name:"#{model.model_name}",
+               if model.tags.length > 0
+                  |tags:[
+                  each tag in model.tags
+                     |{tag_name:"#{tag.tag_name}"},
+                  |]
+               |},
+      |];
+
    .container
       .row
          .panel.panel-default
             .panel-heading
                h3.panel-title 添加tag关联
             .panel-body
-               - var tags = [{tag_name: '无数据'}]
-               - var test= '123123test'
                div
                   span.small 微博版本：
                   .btn-group
@@ -39,7 +52,7 @@ block content
                            if models.length > 0
                               each model in models
                                  li
-                                    a.btn(onclick='displayModel(#{model})') #{model.model_name}
+                                    a.btn(onclick='displayModel("#{model.model_name}")') #{model.model_name}
                br
                div
                   span.small 选择标签：
@@ -47,12 +60,7 @@ block content
                      button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
                         a#tag_display 选择标签
                         span.caret
-                     ul.dropdown-menu(role='menu')
-                        if tags
-                           if tags.length > 0
-                              each tag in tags
-                                 li
-                                    a.btn #{tag.tag_name}
+                     ul#tag_menu.dropdown-menu(role='menu')
                br
                div
                   a.btn.btn-default(type='button',href='./') 保存
