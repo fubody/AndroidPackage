@@ -11,7 +11,7 @@ block content
             a.btn.btn-default.navbar-right(type='button',href='./task') 保存
          .panel.panel-default
             .panel-heading
-               span.label.label-default 选择微博版本
+               span.label.label-default 基本配置
             .panel-body
                span.small 微博版本：
                .btn-group
@@ -27,7 +27,8 @@ block content
                      li.divider
                      li
                         a.btn.btn-default.btn-sm(href='./version') 创建新版本
-         .panel.panel-default
-            .panel-heading
-               span.label.label-default 基本配置
-            .panel-body
+               br
+               br
+               .input-group.input-group-sm
+                  span.input-group-addon 版本描述
+                  input.form-control(type='text',name='description')

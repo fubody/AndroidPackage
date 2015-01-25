@@ -45,7 +45,7 @@ app.get('/relation', Version.fetchVersions, WeiboModel.fetchModels, Turn.turn_to
 
 app.get('/prepare', WeiboModel.init)
 
-app.post('/task/new', Task)
+//app.post('/task/new', Task)
 
 app.get('/admin', function(req, res){
     res.render('admin', {
