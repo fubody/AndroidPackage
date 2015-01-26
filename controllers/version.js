@@ -96,7 +96,7 @@ function extendTagsValue(originalTags, newTag) {
     var resultTags = new Array()
     if(originalTags) {
         for (var i=0;i<originalTags.length;i++) {
-            var curTag = originalTags[0]
+            var curTag = originalTags[i]
             if (curTag.model_name != newTag.model_name) {
                 resultTags.push(curTag)
             }

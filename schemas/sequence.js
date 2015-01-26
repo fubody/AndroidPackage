@@ -3,7 +3,7 @@
  */
 var mongoose = require('mongoose')
 
-var SequenceSchema = new Schema({
+var SequenceSchema = new mongoose.Schema({
     _id				: String, // sequence name
     seq_value		: {type: Number, default: 0}
 });
