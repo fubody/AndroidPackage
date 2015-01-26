@@ -74,7 +74,7 @@ exports.updateTags = function(req, res) {
                 console.log(err)
             }
             if (version) {
-                var updatedTags = extendTagsValue(version.tags,{model_name:model,tag_name:tag})
+                var updatedTags = extendTagsValue(version.related_tags,{model_name:model,tag_name:tag})
                 version.related_tags = updatedTags
                 _version = _.extend(version)
                 _version.save(function(version,err){
@@ -94,14 +94,16 @@ exports.updateTags = function(req, res) {
 
 function extendTagsValue(originalTags, newTag) {
     var resultTags = new Array()
+
+    console.log(originalTags.length)
     if(originalTags) {
         for (var i=0;i<originalTags.length;i++) {
             var curTag = originalTags[i]
             if (curTag.model_name != newTag.model_name) {
-                resultTags.push(curTag)
+                resultTags[resultTags.length] = curTag
             }
         }
     }
-    resultTags.push(newTag)
+    resultTags[resultTags.length] = newTag
     return resultTags
 }
