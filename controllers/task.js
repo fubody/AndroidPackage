@@ -19,7 +19,7 @@ exports.createTask = function (req, res) {
                     if (err) {
                         console.log(err)
                     }
-                    res.render('/')
+                    res.redirect('/')
                 })
             }
         })
@@ -29,12 +29,12 @@ exports.createTask = function (req, res) {
 function get_task_from_req(req) {
 
     return new Task({
-        is_beta: _boolean(req.body.IS_BETA),
-        value_desc: _string(req.body.VALUE_DESC),
+        is_beta: false,
+        value_desc: req.body.description,
         status_code: Config.task_status.waiting.code,
 
         create_at: Date(),
-        app_version: req.body.APP_VERSION
+        app_version: req.body.version
 
     });
 }
