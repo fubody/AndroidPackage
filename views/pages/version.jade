@@ -7,15 +7,15 @@ block content
                 .panel-heading
                     h3.panel-title 添加微博版本
                 .panel-body
-                    form.form-horizontal(role='form', method='post', action='/wbv/version')
+                    form.form-horizontal(role='form',action='/version/new',method='post')
                         .input-group.input-group-sm
                             span.input-group-addon 微博版本名
-                            input.form-control(type='text', name='version_name')
+                            input.form-control(type='text',name='version_name')
                         br
                         .input-group.input-group-sm
                             span.input-group-addon 版本描述
-                            input.form-control(type='text', name='description')
+                            input.form-control(type='text',name='description')
                         br
                         .input-group.input-group-sm
-                            button.btn.btn-default(type='submit') 录入
-                            a.btn.btn-default(type='button', href='/task') 取消
+                            button.btn.btn-default(type="submit") 录入
+                            a.btn.btn-default(type='button', href='/relation') 取消
