@@ -31,7 +31,7 @@ exports.createVersion = function (req, res) {
                             if (err) {
                                 console.log(err)
                             }
-                            res.redirect('/task')
+                            res.redirect('/relation')
                         })
                     }
                 })

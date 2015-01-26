@@ -16,7 +16,15 @@ exports.fetchModels = function (req, res, next) {
 }
 
 exports.init = function (req, res) {
-    model = new WeiboModel({model_name: 'mediaplayer', git_path:'123', description:'123',tags:[{tag_name:'mediaplayer_500'},{tag_name:'mediaplayer_510'},{tag_name:'mediaplayer_520'}]})
+    model = new WeiboModel({
+        model_name: 'mediaplayer',
+        git_path:'123',
+        description:'123',
+        tags:[
+            {tag_name:'mediaplayer_500'},
+            {tag_name:'mediaplayer_510'},
+            {tag_name:'mediaplayer_520'}]
+    })
     model.save(function (err, model) {
         if (err) {
             console.log(err)
