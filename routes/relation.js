@@ -10,5 +10,6 @@ var Turn = require('../controllers/turn')
 var router = express.Router();
 
 router.get('/', Version.fetchVersions, Model.fetchModels, Turn.turn_to_relation)
+router.post('/new',Version.updateTags)
 
 module.exports = router;

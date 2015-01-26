@@ -25,43 +25,47 @@ block content
             .panel-heading
                h3.panel-title 添加tag关联
             .panel-body
-               div
-                  span.small 微博版本：
-                  .btn-group
-                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
-                        a#version_display 选择微博版本
-                        span.caret
-                     ul.dropdown-menu(role='menu')
-                        if versions
-                           if versions.length > 0
-                              each version in versions
-                                 li
-                                    a.btn(onclick='display("version_display","#{version.version_name}")') #{version.version_name}
-                        li.divider
-                        li
-                           a.btn.btn-default.btn-sm(href='./version') 创建新版本
-               br
-               div
-                  span.small 选择仓库：
-                  .btn-group
-                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
-                        a#model_display 选择仓库
-                        span.caret
-                     ul.dropdown-menu(role='menu')
-                        if models
-                           if models.length > 0
-                              each model in models
-                                 li
-                                    a.btn(onclick='displayModel("#{model.model_name}")') #{model.model_name}
-               br
-               div
-                  span.small 选择标签：
-                  .btn-group
-                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
-                        a#tag_display 选择标签
-                        span.caret
-                     ul#tag_menu.dropdown-menu(role='menu')
-               br
-               div
-                  a.btn.btn-default(type='button',href='./') 保存
-                  a.btn.btn-default(type='button',href='./') 取消
+               form.form-horizontal(role='form',action='/relation/new',method='post')
+                  div
+                     span.small 微博版本：
+                     .btn-group
+                        input(type='hidden', name="version", value='')
+                        button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                           a#version_display() 选择微博版本
+                           span.caret
+                        ul.dropdown-menu(role='menu')
+                           if versions
+                              if versions.length > 0
+                                 each version in versions
+                                    li
+                                       a.btn(onclick='display("version_display","#{version.version_name}")') #{version.version_name}
+                           li.divider
+                           li
+                              a.btn.btn-default.btn-sm(href='./version') 创建新版本
+                  br
+                  div
+                     span.small 选择仓库：
+                     .btn-group
+                        input(type='hidden', name="model", value='')
+                        button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                           a#model_display 选择仓库
+                           span.caret
+                        ul.dropdown-menu(role='menu')
+                           if models
+                              if models.length > 0
+                                 each model in models
+                                    li
+                                       a.btn(onclick='displayModel("#{model.model_name}")') #{model.model_name}
+                  br
+                  div
+                     span.small 选择标签：
+                     .btn-group
+                        input(type='hidden', name="tag", value='')
+                        button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                           a#tag_display 选择标签
+                           span.caret
+                        ul#tag_menu.dropdown-menu(role='menu')
+                  br
+                  div
+                     button.btn.btn-default(type='submit') 保存
+                     button.btn.btn-default(type='button',href='./') 取消

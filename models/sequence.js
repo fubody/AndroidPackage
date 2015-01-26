@@ -3,6 +3,6 @@
  */
 var mongoose = require('mongoose')
 var SequenceSchema = require('../schemas/task')
-var Sequence = mongoose.model('task', SequenceSchema)
+var Sequence = mongoose.model('sequence', SequenceSchema)
 
 module.exports = Sequence

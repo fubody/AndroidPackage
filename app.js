@@ -33,21 +33,11 @@ app.use('/task', TaskRoute)
 app.use('/version', VersionRoute)
 app.use('/relation', RelationRoute)
 
-//app.get('/task', Version.getAllVersion)
-//
 //app.post('/task/new',Task.createTask)
-//
-//app.get('/version', function(req, res){
-//    res.render('version',{})
-//})
 //
 //app.post('/version/new', Version.createVersion)
 //
-//app.get('/relation', Version.fetchVersions, WeiboModel.fetchModels, Turn.turn_to_relation)
-//
 //app.get('/prepare', WeiboModel.init)
-//
-////app.post('/task/new', Task)
 //
 //app.get('/admin', function(req, res){
 //    res.render('admin', {

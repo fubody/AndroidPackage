@@ -15,7 +15,7 @@ exports.createVersion = function (req, res) {
                 console.log(err)
             }
             if (version) {
-                res.redirect('/version')
+                res.render('/version',{err_msg:''})
             } else {
                 Sequence.next_seq_id('version', function (err, seq_value) {
                     if (err) {
@@ -60,4 +60,25 @@ exports.fetchVersions = function (req, res, next) {
             next()
         }
     })
+}
+
+exports.updateTags = function(req, res) {
+    var data = req.body
+    if (data) {
+        var version_name = data.version
+        var model = data.model
+        var tag = data.tag
+        Version.findByName(version_name,function(err, version){
+            if (err) {
+                console.log(err)
+            }
+            if (version) {
+                // to be finished...
+            } else {
+                // to be finished...
+            }
+        })
+    } else {
+
+    }
 }
