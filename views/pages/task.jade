@@ -2,45 +2,33 @@
    Created by LI on 2015/1/20.
 extends ../layout
 block content
+   script(type='text/javascript', src='/js/task.js')
    .container
       .row
          .panel
             span.btn-lg 新建打包任务
             a.btn.btn-default.navbar-right(type='button',href='./') 取消
-            a.btn.btn-default.navbar-right(type='button',href='./task') 保存
-         .panel.panel-default
-            .panel-heading
-               span.label.label-default 选择微博版本
-            .panel-body
-               span.small 微博版本：
-               .btn-group
-                  button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown') weibo5.0
-                     span.caret
-                  ul.dropdown-menu(role='menu')
-                     if weiboVersions
-                        if weiboVersions.length > 0
-                           each weiboVersion in weiboVersions
-                              li
-                                 a.btn #{weiboVersion.version_name}
-                        else
-                           li
-                              a.btn.btn-default 暂无版本信息
-                     else
-                        li
-                           a.btn.btn-default 暂无版本信息
-                     //li
-                     //   a.btn weibo5.0
-                     //li
-                     //   a.btn weibo5.0
-                     //li
-                     //   a.btn weibo5.0
-                     li.divider
-                     li
-                        a.btn.btn-default.btn-sm(href='./wbv/version') 创建新版本
-            .panel-body
-               span.small 任务描述：
-               input
+            a.btn.btn-default.navbar-right(type='button',href='./task/new') 保存
          .panel.panel-default
             .panel-heading
                span.label.label-default 基本配置
             .panel-body
+               span.small 微博版本：
+               .btn-group
+                  button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                     a#version_display(type='text') 选择微博版本
+                     span.caret
+                  ul.dropdown-menu(role='menu')
+                     if versions
+                        if versions.length > 0
+                           each version in versions
+                              li
+                                 a.btn(onclick='display("#{version.version_name}")') #{version.version_name}
+                     li.divider
+                     li
+                        a.btn.btn-default.btn-sm(href='./version') 创建新版本
+               br
+               br
+               .input-group.input-group-sm
+                  span.input-group-addon 版本描述
+                  input.form-control(type='text',name='description')

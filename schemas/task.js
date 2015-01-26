@@ -12,7 +12,6 @@ var TaskSchema = new Schema({
     create_at			: Date,
     finish_at			: Date,
     app_version		: String,
-    ext_values			: Object,
 
     log_path           : String,
     zip_path           : String,
