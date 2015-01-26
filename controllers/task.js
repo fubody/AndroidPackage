@@ -4,6 +4,7 @@
 var Task = require('../models/task')
 var Sequence = require('./sequence')
 var Config = require('../config/config')
+var DateUtil = require('./util')
 
 exports.createTask = function (req, res) {
     var taskObj = req.body
@@ -33,7 +34,7 @@ function get_task_from_req(req) {
         value_desc: req.body.description,
         status_code: Config.task_status.waiting.code,
 
-        create_at: Date(),
+        create_at: DateUtil.date_formater(Date()),
         app_version: req.body.version
 
     });

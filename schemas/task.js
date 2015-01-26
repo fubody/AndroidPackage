@@ -9,8 +9,8 @@ var TaskSchema = new mongoose.Schema({
     value_desc			: String,
     status_code		: String,
 
-    create_at			: Date,
-    finish_at			: Date,
+    create_at			: String,
+    finish_at			: String,
     app_version		: String,
 
     log_path           : String,
