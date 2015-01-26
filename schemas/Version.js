@@ -18,7 +18,7 @@ VersionSchema.statics = {
     },
     findById: function(id, cb) {
         return this
-            .findOne({_id: id})
+            .findOne({id: id})
             .exec(cb)
     },
     findByName: function(name, cb) {

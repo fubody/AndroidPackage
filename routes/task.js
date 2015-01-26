@@ -10,6 +10,6 @@ var Turn = require('../controllers/turn')
 var router = express.Router();
 
 router.get('/',Version.fetchVersions,Turn.turn_to_task)
-router.post('/',Task.createTask)
+router.post('/new',Task.createTask)
 
 module.exports = router;

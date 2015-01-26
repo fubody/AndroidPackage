@@ -19,6 +19,7 @@ var bodyParser = require('body-parser')
 var port = 8000;
 var app = express()
 
+mongoose.connect('mongodb://localhost/android_weibo_package')
 
 app.set('views', './views/pages')
 app.set('view engine', 'jade')
