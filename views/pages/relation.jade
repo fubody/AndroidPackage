@@ -29,7 +29,7 @@ block content
                   div
                      span.small 微博版本：
                      .btn-group
-                        input(type='hidden', name="version", value='')
+                        input#version_input(type='hidden', name="version", value='')
                         button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
                            a#version_display() 选择微博版本
                            span.caret
@@ -38,7 +38,7 @@ block content
                               if versions.length > 0
                                  each version in versions
                                     li
-                                       a.btn(onclick='display("version_display","#{version.version_name}")') #{version.version_name}
+                                       a.btn(onclick='display("version_display","version_input","#{version.version_name}")') #{version.version_name}
                            li.divider
                            li
                               a.btn.btn-default.btn-sm(href='./version') 创建新版本
@@ -46,7 +46,7 @@ block content
                   div
                      span.small 选择仓库：
                      .btn-group
-                        input(type='hidden', name="model", value='')
+                        input#model_input(type='hidden', name="model", value='')
                         button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
                            a#model_display 选择仓库
                            span.caret
@@ -60,7 +60,7 @@ block content
                   div
                      span.small 选择标签：
                      .btn-group
-                        input(type='hidden', name="tag", value='')
+                        input#tag_input(type='hidden', name="tag", value='')
                         button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
                            a#tag_display 选择标签
                            span.caret

@@ -4,7 +4,6 @@
 var express = require('express')
 var path = require('path')
 var mongoose = require('mongoose')
-var _ = require('underscore')
 Version = require('./controllers/version')
 WeiboModel = require('./controllers/weibo_model')
 Task = require('./controllers/task')

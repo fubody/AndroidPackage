@@ -3,6 +3,7 @@
  */
 var Version = require('../models/version')
 var Sequence = require('./sequence')
+var _ = require('underscore')
 
 exports.createVersion = function (req, res) {
     var versionObj = req.body
@@ -73,7 +74,15 @@ exports.updateTags = function(req, res) {
                 console.log(err)
             }
             if (version) {
-                // to be finished...
+                var updatedTags = extendTagsValue(version.related_tags,{model_name:model,tag_name:tag})
+                version.related_tags = updatedTags
+                _version = _.extend(version)
+                _version.save(function(version,err){
+                    if (err) {
+                        console.log(err)
+                    }
+                    res.redirect('/')
+                })
             } else {
                 // to be finished...
             }
@@ -81,4 +90,20 @@ exports.updateTags = function(req, res) {
     } else {
 
     }
+}
+
+function extendTagsValue(originalTags, newTag) {
+    var resultTags = new Array()
+
+    console.log(originalTags.length)
+    if(originalTags) {
+        for (var i=0;i<originalTags.length;i++) {
+            var curTag = originalTags[i]
+            if (curTag.model_name != newTag.model_name) {
+                resultTags[resultTags.length] = curTag
+            }
+        }
+    }
+    resultTags[resultTags.length] = newTag
+    return resultTags
 }
