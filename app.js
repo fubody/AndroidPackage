@@ -7,6 +7,7 @@ var mongoose = require('mongoose')
 var _ = require('underscore')
 Version = require('./controllers/version')
 WeiboModel = require('./controllers/weibo_model')
+Task = require('./controllers/task')
 Turn = require('./controllers/turn')
 var bodyParser = require('body-parser')
 var port = 11233
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.listen(port);
 
 app.get('/', function (req, res) {
+    Task.
     res.render('index',{
         tasks: [{
             id: 1,
@@ -34,6 +36,8 @@ app.get('/', function (req, res) {
 })
 
 app.get('/task', Version.getAllVersion)
+
+app.post('/task/new',Task.createTask)
 
 app.get('/version', function(req, res){
     res.render('version',{})
