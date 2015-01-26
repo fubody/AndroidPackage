@@ -39,6 +39,14 @@ function get_task_from_req(req) {
     });
 }
 
-exports.getAllTasks = function () {
-    
+exports.fetchAllTasks = function (req, res, next) {
+    Task.fetch(function (err, tasks) {
+        if (err) {
+            console.log(err)
+        }
+        if (tasks) {
+            req.body.tasks = tasks
+            next()
+        }
+    })
 }
