@@ -27,11 +27,11 @@ block content
                                 each task in tasks
                                     tr
                                         td #{task.id}
-                                        td #{task.status}
+                                        td #{task.status_code}
                                         td #{task.create_at}
                                         td #{task.finish_at}
                                         td #{task.app_version}
-                                        td #{task.desc}
+                                        td #{task.description}
                                         td: a(target="_blank", href="../task/#{task.id}") 查看
                                         td: a(target="_blank", href="#") 下载
                                         td: a(target="_blank", href="#") 下载

@@ -4,7 +4,7 @@
 var Task = require('../models/task')
 var Sequence = require('./sequence')
 var Config = require('../config/config')
-var DateUtil = require('./util')
+var DateUtil = require('../utils/date_utils')
 
 exports.createTask = function (req, res) {
     var taskObj = req.body
