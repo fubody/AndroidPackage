@@ -1,6 +1,5 @@
 .DS_Store
-build/output/
-build/source/
+build/output/*
 build/script/temp
 nohup.out
 */.DS_Store
