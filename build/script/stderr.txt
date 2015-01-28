@@ -1,0 +1,12 @@
+命令语法不正确。
+cp: copying multiple files, but last argument `./build/output\\package_1' is not a directory
+Try `cp --help' for more information.
+命令语法不正确。
+cp: copying multiple files, but last argument `./build/outputpackage_1' is not a directory
+Try `cp --help' for more information.
+命令语法不正确。
+cp: copying multiple files, but last argument `./build/outputpackage_2' is not a directory
+Try `cp --help' for more information.
+命令语法不正确。
+cp: copying multiple files, but last argument `./build/output/package_1' is not a directory
+Try `cp --help' for more information.

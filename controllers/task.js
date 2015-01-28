@@ -5,6 +5,8 @@ var Task = require('../models/task')
 var Sequence = require('./sequence')
 var Config = require('../config/config')
 var DateUtil = require('../utils/date_utils')
+var Package = require('../utils/package')
+var SocketIO = require('../utils/socketio')
 
 exports.createTask = function (req, res) {
     var taskObj = req.body
@@ -20,6 +22,8 @@ exports.createTask = function (req, res) {
                     if (err) {
                         console.log(err)
                     }
+                    SocketIO.task_created(_task)
+                    Package.package(_task)
                     res.redirect('/')
                 })
             }

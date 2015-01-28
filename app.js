@@ -13,6 +13,7 @@ IndexRoute = require('./routes/index')
 TaskRoute = require('./routes/task')
 VersionRoute = require('./routes/version')
 RelationRoute = require('./routes/relation')
+SocketIO = require('./utils/socketio')
 
 var bodyParser = require('body-parser')
 var port = 8000;
@@ -24,10 +25,12 @@ app.set('views', './views/pages')
 app.set('view engine', 'jade')
 app.use(bodyParser.urlencoded({extended:false}))
 
-require('http').createServer(app);
+var server = require('http').createServer(app);
+server.listen(port);
+global.io = SocketIO.init(server)
 
 app.use(express.static(path.join(__dirname, 'public')))
-app.listen(port);
+
 
 // catch 404 and forward to error handler
 //app.use(function(req, res, next) {
