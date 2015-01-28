@@ -25,13 +25,13 @@ block content
             .panel-heading
                h3.panel-title 添加tag关联
             .panel-body
-               form.form-horizontal(role='form',action='/relation/new',method='post')
+               form.form-horizontal(role='form',action='/relation/new',method='post',onsubmit='return check_relationform()')
                   div
                      span.small 微博版本：
                      .btn-group
                         input#version_input(type='hidden', name="version", value='')
                         button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
-                           a#version_display() 选择微博版本
+                           a#version_display 选择微博版本
                            span.caret
                         ul.dropdown-menu(role='menu')
                            if versions
@@ -68,4 +68,4 @@ block content
                   br
                   div
                      button.btn.btn-default(type='submit') 保存
-                     button.btn.btn-default(type='button',href='./') 取消
+                     a.btn.btn-default(type='button',href='./') 取消

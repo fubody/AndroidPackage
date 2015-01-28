@@ -8,3 +8,12 @@ function display(version_name) {
     target = $('#version_input')
     target.val(version_name)
 }
+
+function check_form(){
+    var version_name = $('#version_input').val();
+    if(version_name.length == 0){
+        alert('未选择微博版本');
+        return false;
+    }
+    return true;
+}

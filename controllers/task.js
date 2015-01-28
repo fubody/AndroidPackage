@@ -5,7 +5,6 @@ var Task = require('../models/task')
 var Sequence = require('./sequence')
 var Config = require('../config/config')
 var DateUtil = require('../utils/date_utils')
-
 exports.createTask = function (req, res) {
     var taskObj = req.body
 
@@ -50,4 +49,33 @@ exports.fetchAllTasks = function (req, res, next) {
             next()
         }
     })
+}
+
+exports.fetchPartTasks = function(req, res){
+    var page = req.query.p<1?1:req.query.p;
+    console.log(page);
+    var total; //页数
+    var pagenum =3; //每页的条数
+    if(page){
+        page = page;
+    }else{
+        page = 1;
+    }
+    Task.find(function(err, task){
+        if(err){}else{
+            total =  Math.ceil(task.length / pagenum);
+        }
+    });
+    Task.find().limit(pagenum).skip(pagenum*(page-1)).exec(function(err, result){
+        if(err){
+            console.log(err)
+        }else{
+
+            res.render('index',{
+                tasks:result,
+                page:page,
+                total:total
+            });
+        }
+    });
 }

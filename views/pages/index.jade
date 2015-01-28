@@ -1,6 +1,9 @@
 extends ../layout
 
 block content
+    link(href="/css/bootstrap.min.css", rel="stylesheet", media="screen")
+    script(type='text/javascript', src='/js/bootstrap.min.js')
+    script(type='text/javascript', src='/js/bootstrap-paginator.min.js')
     .container
         .row
             .panel.panel-default
@@ -31,7 +34,7 @@ block content
                                         td #{task.create_at}
                                         td #{task.finish_at}
                                         td #{task.app_version}
-                                        td #{task.description}
+                                        td #{task.value_desc}
                                         td: a(target="_blank", href="../task/#{task.id}") 查看
                                         td: a(target="_blank", href="#") 下载
                                         td: a(target="_blank", href="#") 下载
@@ -42,8 +45,23 @@ block content
                         else
                             tr
                                 td(colspan='10', align='center') 暂无数据
-                    ul.pager
-                        li.previous.disabled
-                            a(href='#') &larr; Previous
-                        li.next.disabled
-                            a(href='#') Next &rarr;
+
+                    .span(align='center')
+                        ul#page1(pageCount='#{total}', pageNum='#{page}')
+                            //<div id="page1" pageCount="<%=page.pageCount%>" pageNum="<%=page.num %>"
+                            //pageSize="<%=page.size%>" pageLimit="<%=page.limit%>" numberOfPages="<%=page.numberOf%>"></div>
+                    script(type="text/javascript").
+                        //分页功能
+                        $(function () {
+                            var page = $('#page1');
+                            var options;
+                            options = {
+                                bootstrapMajorVersion: 3,
+                                currentPage: page.attr('pageNum'),//选中页
+                                totalPages: page.attr('pageCount'),//总页数
+                                pageUrl: function (type, page, current) {
+                                    return '/index?p=' + page;
+                                }
+                            };
+                            $('#page1').bootstrapPaginator(options);
+                        })

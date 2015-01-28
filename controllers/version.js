@@ -16,7 +16,7 @@ exports.createVersion = function (req, res) {
                 console.log(err)
             }
             if (version) {
-                res.render('/version',{err_msg:''})
+                res.render('version',{err_msg:'添加失败，该版本已存在'})
             } else {
                 Sequence.next_seq_id('version', function (err, seq_value) {
                     if (err) {
@@ -31,7 +31,7 @@ exports.createVersion = function (req, res) {
                             if (err) {
                                 console.log(err)
                             }
-                            res.redirect('/task')
+                            res.redirect('/relation')
                         })
                     }
                 })

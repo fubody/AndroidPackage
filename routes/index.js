@@ -9,6 +9,8 @@ var Task = require('../controllers/task');
 var Turn = require('../controllers/turn')
 var router = express.Router();
 
-router.get('/', Task.fetchAllTasks, Turn.turn_to_index);
+//router.get('/', Task.fetchAllTasks, Turn.turn_to_index);
+router.get('/', Task.fetchPartTasks);
+router.get('/index', Task.fetchPartTasks);
 
 module.exports = router;
