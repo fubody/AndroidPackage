@@ -7,8 +7,10 @@ var Config = require('../config/config')
 var DateUtil = require('../utils/date_utils')
 var Package = require('../utils/package')
 var SocketIO = require('../utils/socketio')
+var fs = require('fs')
+var transfer = require('../utils/transfer')
 
-exports.createTask = function (req, res) {
+module.exports.createTask = function (req, res) {
     var taskObj = req.body
 
     if (taskObj) {
@@ -44,7 +46,7 @@ function get_task_from_req(req) {
     });
 }
 
-exports.fetchAllTasks = function (req, res, next) {
+module.exports.fetchAllTasks = function (req, res, next) {
     Task.fetch(function (err, tasks) {
         if (err) {
             console.log(err)
@@ -54,4 +56,24 @@ exports.fetchAllTasks = function (req, res, next) {
             next()
         }
     })
+}
+
+module.exports.downloadApk = function (req, res) {
+    var task = {id : req.params.id};
+    var root_dir = './build/output/package_'+ task.id + '/';
+
+    fs.readdir(root_dir, function (err, files) {
+        if (files) {
+            for (var i = 0; i < files.length; i++) {
+            }
+            if(files.length == 3) {
+                var apk_path = root_dir + files[2]
+                transfer.download(req, res, apk_path)
+            }
+        } else {
+
+        }
+    })
+
+    //transfer.download(req, res, file_path);
 }

@@ -11,5 +11,6 @@ var router = express.Router();
 
 router.get('/',Version.fetchVersions,Turn.turn_to_task)
 router.post('/new',Task.createTask)
+router.get('/:id/download_apk',Task.downloadApk)
 
 module.exports = router;

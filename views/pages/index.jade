@@ -29,17 +29,21 @@ block content
                         if tasks
                             if tasks.length > 0
                                 each task in tasks
-                                    tr
+                                    tr(task_id='#{task.id}')
                                         td #{task.id}
                                         td #{task.status_code}
                                         td #{task.create_at}
                                         td #{task.finish_at}
                                         td #{task.app_version}
-                                        td #{task.description}
-                                        td: a(target="_blank", href="../task/#{task.id}") 查看
-                                        td: a(target="_blank", href="#") 下载
-                                        td: a(target="_blank", href="#") 下载
-                                        td: a(target="_blank", href="#") 下载
+                                        td #{task.value_desc}
+                                        td
+                                            a(target="_blank", href="../task/#{task.id}") 查看
+                                        td
+                                            a(target="_blank", href="../task/#{task.id}/download_apk") 下载
+                                        td
+                                            a(target="_blank", href="#") 下载
+                                        td
+                                            a(target="_blank", href="#") 下载
                             else
                                 tr
                                     td(colspan='10') 暂无数据

@@ -18,3 +18,7 @@ module.exports.init = function(server) {
 module.exports.task_created = function (task) {
 	global.io.sockets.emit('task_created', task)
 }
+
+module.exports.task_status_changed = function (task) {
+	global.io.sockets.emit('task_status_changed', task)
+}

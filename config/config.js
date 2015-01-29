@@ -1,7 +1,7 @@
 /**
  * Created by LI on 2015/1/25.
  */
-exports.task_status = {
+module.exports.task_status = {
     waiting: {code: '0', title: "等待中"},
     packaging: {code: '1', title: "正在执行"},
     failed: {code:'2', title: "失败"},
