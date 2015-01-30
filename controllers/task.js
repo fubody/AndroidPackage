@@ -38,7 +38,7 @@ function get_task_from_req(req) {
     return new Task({
         is_beta: false,
         value_desc: req.body.description,
-        status_code: Config.task_status.waiting.code,
+        status_code: Config.task_status.waiting.title,
 
         create_at: DateUtil.date_formater(Date()),
         app_version: req.body.version

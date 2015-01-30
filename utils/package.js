@@ -43,9 +43,9 @@ module.exports.package = function (task) {
                     }
                 }
                 if (task.apk_path) {
-                    task.status_code = config.task_status.succeed.code
+                    task.status_code = config.task_status.succeed.title
                 } else {
-                    task.status_code = config.task_status.failed.code
+                    task.status_code = config.task_status.failed.title
                 }
                 task.finish_at = DateUtil.date_formater(Date())
                 task.save()
@@ -54,7 +54,7 @@ module.exports.package = function (task) {
             }
         })
     })
-    task.status_code = config.task_status.packaging.code;
+    task.status_code = config.task_status.packaging.title;
     task.save()
     SocketIO.task_status_changed(task)
 }
