@@ -69,26 +69,30 @@ function render_tasks_table() {
 
             var page_index = parseInt(service_data.page_index);
             var page_count = parseInt(service_data.page_count);
-            var navigator_html;
+            var navigator_html = '';
             if (page_count && page_index) {
-                navigator_html = '<ul class="pagination">';
+                var start = page_index - 4 > 0 ? page_index -4 : 1;
+                var end = page_index + 4 < page_count ? page_index + 4 : page_count;
                 if (page_index > 1) {
                     navigator_html += '<li><a href="/?p=' + (page_index - 1) + '">&laquo;</a></li>';
                 } else {
                     navigator_html += '<li><a class="disabled">&laquo;</a></li>';
                 }
-                navigator_html += '<li><a class="active" href="#">' + page_index + '</a></li>';
+                for (var i = start; i <= end; i++) {
+                    if (i == page_index) {
+                        navigator_html += '<li><a class="active" href="#">' + i + '</a></li>';
+                    } else {
+                        navigator_html += '<li><a href="/?p=' + i + '">' + i + '</a></li>';
+                    }
+                }
                 if (page_index < page_count) {
                     navigator_html += '<li><a href="/?p=' + (page_index + 1) + '">&raquo;</a></li>';
                 } else {
                     navigator_html += '<li><a class="disabled">&raquo;</a></li>';
                 }
-                navigator_html += '</ul>';
             } else {
-                navigator_html = '<ul class="pagination">';
                 navigator_html += '<li><a class="active" href="#">1</a></li>';
                 navigator_html += '<li><a class="disabled">&raquo;</a></li>';
-                navigator_html += '</ul>';
             }
             $('#page_navigation').html(navigator_html)
         }
