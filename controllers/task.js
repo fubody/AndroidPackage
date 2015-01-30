@@ -52,28 +52,17 @@ module.exports.fetchAllTasks = function (req, res, next) {
             console.log(err)
         }
         if (tasks) {
-            req.body.tasks = tasks
+            req.body.tasks = JSON.stringify(tasks)
             next()
         }
     })
 }
 
-module.exports.downloadApk = function (req, res) {
+module.exports.download = function (req, res) {
     var task = {id : req.params.id};
     var root_dir = './build/output/package_'+ task.id + '/';
-
-    fs.readdir(root_dir, function (err, files) {
-        if (files) {
-            for (var i = 0; i < files.length; i++) {
-            }
-            if(files.length == 3) {
-                var apk_path = root_dir + files[2]
-                transfer.download(req, res, apk_path)
-            }
-        } else {
-
-        }
-    })
+    var file_path = root_dir + req.query['file_name'];
+    transfer.download(req, res, file_path)
 
     //transfer.download(req, res, file_path);
 }
