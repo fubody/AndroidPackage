@@ -76,11 +76,11 @@ function render_tasks_table() {
                 if (page_index > 1) {
                     navigator_html += '<li><a href="/?p=' + (page_index - 1) + '">&laquo;</a></li>';
                 } else {
-                    navigator_html += '<li><a class="disabled">&laquo;</a></li>';
+                    navigator_html += '<li class="disabled"><a>&laquo;</a></li>';
                 }
                 for (var i = start; i <= end; i++) {
                     if (i == page_index) {
-                        navigator_html += '<li><a class="active" href="#">' + i + '</a></li>';
+                        navigator_html += '<li class="active" ><a href="#">' + i + '</a></li>';
                     } else {
                         navigator_html += '<li><a href="/?p=' + i + '">' + i + '</a></li>';
                     }
@@ -88,11 +88,11 @@ function render_tasks_table() {
                 if (page_index < page_count) {
                     navigator_html += '<li><a href="/?p=' + (page_index + 1) + '">&raquo;</a></li>';
                 } else {
-                    navigator_html += '<li><a class="disabled">&raquo;</a></li>';
+                    navigator_html += '<li class="disabled"><a>&raquo;</a></li>';
                 }
             } else {
-                navigator_html += '<li><a class="active" href="#">1</a></li>';
-                navigator_html += '<li><a class="disabled">&raquo;</a></li>';
+                navigator_html += '<li class="active"><a href="#">1</a></li>';
+                navigator_html += '<li class="disabled"><a>&raquo;</a></li>';
             }
             $('#page_navigation').html(navigator_html)
         }
