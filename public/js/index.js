@@ -49,20 +49,62 @@ function create_single_tr(task) {
 }
 
 function render_tasks_table() {
-    var tasks_span = $('#tasks_data');
-    if (tasks_span) {
-        var tasks_string = tasks_span.text()
-        eval('tasks = ' + tasks_string)
-        if (tasks && tasks.length > 0) {
-            var task_html_info = '';
-            for (var i = 0; i < tasks.length; i++) {
-                var task = tasks[i];
-                task_html_info += '<tr task_id=' + task.id + '>'+ create_single_tr(task) + '</tr>\n';
+    var data_span = $('#service_data');
+    if (data_span) {
+        var data_string = data_span.text()
+        eval('service_data = ' + data_string)
+        if (service_data) {
+            var tasks = service_data.tasks;
+            if (tasks && tasks.length > 0) {
+                var task_html_info = '';
+                for (var i = 0; i < tasks.length; i++) {
+                    var task = tasks[i];
+                    task_html_info += '<tr task_id=' + task.id + '>'+ create_single_tr(task) + '</tr>\n';
+                }
+                $('#tasks_table').html(task_html_info)
+            } else {
+                var task_html_info = '<tr><td colspan="10">暂无数据</td></tr>'
+                $('#tasks_table').html(task_html_info)
             }
-            $('#tasks_table').html(task_html_info)
-        } else {
-            var task_html_info = '<tr><td colspan="10">暂无数据</td></tr>'
-            $('#tasks_table').html(task_html_info)
+
+            var page_index = parseInt(service_data.page_index);
+            var page_count = parseInt(service_data.page_count);
+            var navigator_html;
+            if (page_count && page_index) {
+                navigator_html = '<ul class="pagination">';
+                if (page_index > 1) {
+                    navigator_html += '<li><a href="/?p=' + (page_index - 1) + '">&laquo;</a></li>';
+                } else {
+                    navigator_html += '<li><a class="disabled">&laquo;</a></li>';
+                }
+                navigator_html += '<li><a class="active" href="#">' + page_index + '</a></li>';
+                if (page_index < page_count) {
+                    navigator_html += '<li><a href="/?p=' + (page_index + 1) + '">&raquo;</a></li>';
+                } else {
+                    navigator_html += '<li><a class="disabled">&raquo;</a></li>';
+                }
+                navigator_html += '</ul>';
+            } else {
+                navigator_html = '<ul class="pagination">';
+                navigator_html += '<li><a class="active" href="#">1</a></li>';
+                navigator_html += '<li><a class="disabled">&raquo;</a></li>';
+                navigator_html += '</ul>';
+            }
+            $('#page_navigation').html(navigator_html)
         }
     }
 }
+
+$(function () {
+    var page = $('#page1');
+    var options;
+    options = {
+        bootstrapMajorVersion: 3,
+        currentPage: page.attr('pageNum'),//选中页
+        totalPages: page.attr('pageCount'),//总页数
+        pageUrl: function (type, page, current) {
+            return '/index?p=' + page;
+        }
+    };
+    $('#page1').bootstrapPaginator(options);
+})

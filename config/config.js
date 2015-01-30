@@ -8,3 +8,5 @@ module.exports.task_status = {
     succeed: {code:'3', title: "已完成"},
     interrupted: {code:'99', title: "异常中断"},
     none: {code:'999', title: "-"}}
+
+module.exports.page_zie = 3

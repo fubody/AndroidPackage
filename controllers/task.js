@@ -59,10 +59,41 @@ module.exports.fetchAllTasks = function (req, res, next) {
 }
 
 module.exports.download = function (req, res) {
-    var task = {id : req.params.id};
-    var root_dir = './build/output/package_'+ task.id + '/';
+    var task = {id: req.params.id};
+    var root_dir = './build/output/package_' + task.id + '/';
     var file_path = root_dir + req.query['file_name'];
     transfer.download(req, res, file_path)
 
     //transfer.download(req, res, file_path);
+}
+
+module.exports.fetchTaskCount = function (req, res, next) {
+    Task.count(function (err, count) {
+        if (err){
+        } else {
+            req.body.service_data.page_count = Math.ceil(count/Config.page_zie)
+            next()
+        }
+    })
+}
+
+module.exports.fetchPartTasks = function(req, res, next){
+    var p = req.query['p'];
+    var page;
+    if (p && p >= 1) {
+        page = p;
+    } else {
+        page = 1;
+    }
+
+    var page_size = Config.page_zie
+    Task.find().sort('-id').limit(page_size).skip(page_size*(page-1)).exec(function(err, tasks){
+        if(err){
+            console.log(err)
+        }else{
+            req.body.service_data.tasks = tasks
+            req.body.service_data.page_index = page
+            next()
+        }
+    });
 }

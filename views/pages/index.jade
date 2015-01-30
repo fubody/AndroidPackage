@@ -5,9 +5,12 @@ block content
     script
         |var socket = io.connect('/');
     script(type='text/javascript', src='/js/index.js')
-    if tasks
-        span#tasks_data(style='display:none')
-            |#{tasks}
+    if service_data
+        span#service_data(style='display:none')
+            |#{service_data}
+    link(href="/css/bootstrap.min.css", rel="stylesheet", media="screen")
+    script(type='text/javascript', src='/js/bootstrap.min.js')
+    script(type='text/javascript', src='/js/bootstrap-paginator.min.js')
     .container
         .row
             .panel.panel-default
@@ -29,8 +32,5 @@ block content
                                 th ZIP
                                 th APK
                         tbody#tasks_table
-                    ul.pager
-                        li.previous.disabled
-                            a(href='#') &larr; Previous
-                        li.next.disabled
-                            a(href='#') Next &rarr;
+                    .span(align='center')
+                        ul#page_navigation.pagination

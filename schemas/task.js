@@ -6,7 +6,7 @@ var mongoose = require('mongoose')
 var TaskSchema = new mongoose.Schema({
     id					: String,
     is_beta				: Boolean,
-    value_desc			: String,
+    value_desc			: String,//任务描述
     status_code		: String,
 
     create_at			: String,
