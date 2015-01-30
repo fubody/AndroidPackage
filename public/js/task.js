@@ -12,6 +12,7 @@ function display(version_name) {
 function check_form(){
     var version_name = $('#version_input').val();
     if(version_name.length == 0){
+        document.getElementById('sub_btn').blur();
         alert('未选择微博版本');
         return false;
     }

@@ -56,8 +56,8 @@ function check_relationform(){
     if(msg.length == 0){
         return true;
     }else{
+        document.getElementById('sub_btn').blur();
         alert(msg+'未选择');
-        document.getElementById('version_display').focus();
         return false;
     }
 }
