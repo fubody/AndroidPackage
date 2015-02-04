@@ -12,7 +12,18 @@ var transfer = require('../utils/transfer')
 
 module.exports.createTask = function (req, res) {
     var taskObj = req.body
-
+    console.log(taskObj);
+    var selected_models_string = taskObj.selected_models;
+    var selected_models;
+    if (selected_models_string) {
+        selected_models = selected_models_string.split(',');
+    }
+    for (var i = 0; i < selected_models.length; i++) {
+        var model_name = selected_models[i];
+        var tag_value = taskObj[model_name];
+        console.log(tag_value);
+    }
+    return;
     if (taskObj) {
         var _task = get_task_from_req(req)
         Sequence.next_seq_id('task', function (err, seq_value) {

@@ -3,10 +3,25 @@
  */
 var selected_models = []
 var all_models = []
+//related_tags用于向服务器提交数据
+var related_tags = []
 
 function display(id,model_name) {
-    var target = $('#' + id)
-    target.html(model_name)
+    var target = $('#' + id);
+    target.html(model_name);
+}
+
+function display_tag(model_name,tag_name) {
+    $('#' + model_name + '_tags_display').html(tag_name);
+    $('#' + model_name + '_tags_input').val(tag_name);
+    for (var i = 0; i < related_tags.length; i++) {
+        var item = related_tags[i];
+        if (item.model_name  = model_name) {
+            item.tag_name = tag_name;
+            return;
+        }
+    }
+    related_tags[related_tags.length] = {model_name:model_name, tag_name: tag_name};
 }
 
 function commitAddModel() {
@@ -51,6 +66,7 @@ function refresh_models_content() {
         var name = selected_models[i];
         models_content_html += get_single_model_html(getModelByName(name));
     }
+    models_content_html += '<input id="related_tags" type="hidden" name="related_tags" value=""/>';
     $('#models_content').html(models_content_html);
 }
 
@@ -61,13 +77,15 @@ function get_single_model_html(model) {
         '<a id="' + model.model_name + '_tags_display">选择tag</a><span class="caret"></span></button><ul class="dropdown-menu pull-right">';
     for(var i = 0; i < model.tags.length; i++) {
         var tag = model.tags[i];
-        model_html += '<li><a class="btn" onclick="display(\'' + model.model_name + '_tags_display\',\'' + tag + '\')" >' + tag + '</a></li>'
+        model_html += '<li><a class="btn" onclick="display_tag(\'' + model.model_name + '\',\'' + tag + '\')" >' + tag + '</a></li>'
     }
     model_html += '</ul></div>' +
-        '<a type="button" class="btn btn-danger" onclick="removeModel(\'' + model.model_name + '\')">删除</a>' +
-        '</div></div>';
+        '<a type="button" class="btn btn-danger" onclick="removeModel(\'' + model.model_name + '\')">删除</a></div></div>' +
+        '<input id="' + model.model_name + '_tags_input" type="hidden" name="' + model.model_name + '_tag" value=""/>';
     return model_html;
 }
+
+//            input#version_input(type='hidden', name="version", value='')
 
 function removeModel(model_name) {
     var i;
@@ -127,11 +145,16 @@ function suggest_tags() {
                     if (tag_index > 0) {
                         var tag_suffix = tag.substring(tag_index);
                         if(tag_suffix == suffix) {
-                            display(name + '_tags_display',tag);
+                            display_tag(name,tag);
                         }
                     }
                 }
             }
         }
     }
+}
+
+function submitTask() {
+    $('#related_tags').val(JSON.toString(related_tags));
+    $('#task_form').submit();
 }

@@ -8,16 +8,18 @@ block content
          |#{models}
    .container
       .row
-         form.form-horizontal(role='form',action='/task/new',method='post',onsubmit='return check_form()')
+         form#task_form.form-horizontal(role='form',action='/task/new',method='post')
             .panel
                span.btn-lg 新建打包任务
+               a.btn.btn-default.pull-right(href='/') 取消
+               a.btn.btn-default.pull-right(onclick='submitTask()') 保存
             .panel.panel-default
                .panel-heading
                   span.label.label-info 基本配置
                .panel-body
                   .input-group
                      span.input-group-addon 微博版本名
-                     input#weibo_version_name.form-control(type='text' placeholder='在此输入微博版本名' style='width:500px')
+                     input#weibo_version_name.form-control(name='weibo_version_name', type='text', placeholder='在此输入微博版本名', style='width:500px')
                      button.btn.btn-default.btn-sm(type='button', style='margin-left:20px', onclick='suggest_tags()')
                         span.glyphicon.glyphicon-ok
                         |确定
@@ -30,23 +32,23 @@ block content
                      |添加
                #models_content.panel-body
 
-   #add_model.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel' aria-hidden='true')
-      .modal-dialog
-         .modal-content
-            .modal-header
-               button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
-               h4#modalLabel.modal-title 选择添加的模块
-            .modal-body
-               div
-                  span.small 选择模块：
-                  .btn-group
-                     button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
-                        a#model_display 选择模块
-                        span.caret
-                     ul#modal_options.dropdown-menu(role='menu')
-            .modal-footer
-               a.btn.btn-default(type='button',data-dismiss='modal') 关闭
-               a.btn.btn-primary(type='button',data-dismiss='modal',onclick='commitAddModel()') 添加
+            #add_model.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalLabel' aria-hidden='true')
+               .modal-dialog
+                  .modal-content
+                     .modal-header
+                        button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                        h4#modalLabel.modal-title 选择添加的模块
+                     .modal-body
+                        div
+                           span.small 选择模块：
+                           .btn-group
+                              button.btn.btn-default.dropdown-toggle.btn-sm(type='button',data-toggle='dropdown')
+                                 a#model_display 选择模块
+                                 span.caret
+                              ul#modal_options.dropdown-menu(role='menu')
+                     .modal-footer
+                        a.btn.btn-default(type='button',data-dismiss='modal') 关闭
+                        a.btn.btn-primary(type='button',data-dismiss='modal',onclick='commitAddModel()') 添加
 
 
 
