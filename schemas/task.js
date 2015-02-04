@@ -12,6 +12,7 @@ var TaskSchema = new mongoose.Schema({
     create_at			: String,
     finish_at			: String,
     app_version		: String,
+    related_tags      : Array,
 
     log_path           : String,
     zip_path           : String,

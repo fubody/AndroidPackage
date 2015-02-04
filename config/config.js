@@ -9,4 +9,4 @@ module.exports.task_status = {
     interrupted: {code:'99', title: "异常中断"},
     none: {code:'999', title: "-"}}
 
-module.exports.page_zie = 3
+module.exports.page_zie = 15

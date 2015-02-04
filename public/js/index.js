@@ -71,6 +71,7 @@ function render_tasks_table() {
             var page_count = parseInt(service_data.page_count);
             var navigator_html = '';
             if (page_count && page_index) {
+                //设置分页显示的下标数字
                 var start = page_index - 4 > 0 ? page_index -4 : 1;
                 var end = page_index + 4 < page_count ? page_index + 4 : page_count;
                 if (page_index > 1) {
@@ -98,17 +99,3 @@ function render_tasks_table() {
         }
     }
 }
-
-$(function () {
-    var page = $('#page1');
-    var options;
-    options = {
-        bootstrapMajorVersion: 3,
-        currentPage: page.attr('pageNum'),//选中页
-        totalPages: page.attr('pageCount'),//总页数
-        pageUrl: function (type, page, current) {
-            return '/index?p=' + page;
-        }
-    };
-    $('#page1').bootstrapPaginator(options);
-})

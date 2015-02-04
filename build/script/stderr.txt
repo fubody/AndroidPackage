@@ -11,3 +11,5 @@ Try `cp --help' for more information.
 cp: copying multiple files, but last argument `./build/output/package_1' is not a directory
 Try `cp --help' for more information.
 子目录或文件 .\build\output\package_1 已经存在。
+子目录或文件 .\build\output\package_1 已经存在。
+cp: omitting directory `./build/source/weibo_dev_workset'

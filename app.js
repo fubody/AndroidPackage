@@ -72,7 +72,7 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-//app.get('/prepare', WeiboModel.init)
+app.get('/prepare', WeiboModel.init)
 //
 //app.get('/person/:id', function(req, res) {
 //    var id = req.params.id

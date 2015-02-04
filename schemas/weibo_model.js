@@ -7,7 +7,7 @@ var ModelSchema = new mongoose.Schema({
     model_name: String,
     git_path:   String,
     description: String,
-    tags:       Array
+    tags:   Array
 })
 
 ModelSchema.statics = {

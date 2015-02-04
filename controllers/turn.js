@@ -12,6 +12,7 @@ module.exports.turn_to_index = function (req, res) {
 }
 
 module.exports.turn_to_task = function (req, res) {
+    req.body.models = JSON.stringify(req.body.models)
     res.render('task', req.body)
 }
 
